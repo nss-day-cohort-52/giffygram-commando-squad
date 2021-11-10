@@ -1,3 +1,4 @@
+import { LoginForm } from "./auth/Login.js"
 import { fetchData } from "./data/provider.js"
 import { GiffyGram } from "./GiffyGram.js"
 
@@ -16,3 +17,8 @@ export const renderApp = () => {
     )
 }
 renderApp()
+
+document.addEventListener("stateChanged",
+event => {
+    renderApp()
+})
