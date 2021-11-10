@@ -8,5 +8,9 @@ const applicationState = {
         chosenUser: null,
         displayFavorites: false,
         displayMessages: false
-    }
+    },
+    users: [],
+    messages: [],
+    likes: [],
+    posts: []
 }
