@@ -1,24 +1,9 @@
-// this module is the messaging form
+import {getUsers} from "../data/provider.js"
 
-// make a function that returns html to the dom
-
-/// this Html shouls have the format of the form to sent messages 
-
-/// we need a drop down to select active governers from the list
-
-document.addEventListener(
-    "change",
-    (changeEvent) => {
-        if (changeEvent.target.id === "governor") {
-            const governerOption = changeEvent.target.value
-        } // we need to store selected govoner in transient state.
-    }
-)
-
-
-export const MessageUserSelect = () => { // eporting the desired html to the page
-    const user = getUsers()
+export const MessageUsers = () => { // eporting the desired html to the page
+    const users = getUsers()
     let html= "" 
+    // the fx below it the recipient drop down
     html += ` <div> <label> Choose your user </label> 
     <select id="user"> 
     <option value="0">Choose your user </option> 
@@ -28,16 +13,13 @@ export const MessageUserSelect = () => { // eporting the desired html to the pag
         } 
         
     html+= "</select></div>"  
-    
- return html //returning the HTML string
+// here we start the input field gor messages
+html +=  `<div class="field">
+<label class="label" for="serviceDescription">Description</label>
+<input type="text" name="serviceDescription" class="input" />
+</div>`
+
+return html
 }
 
-export const MessageTextArea = () => { // eporting the desired html to the page
-    const user = getUsers()
-    let html= "" 
-    html +=  `<div class="field">
-    <label class="label" for="serviceDescription">Description</label>
-    <input type="text" name="serviceDescription" class="input" />
-</div>'
-         
-}
+// save/ cancle buttons needed 
