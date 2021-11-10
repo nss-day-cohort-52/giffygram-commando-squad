@@ -1,4 +1,5 @@
 import { PostEntry } from "./feed/PostEntry.js"
+import { navBar } from "./nav/navBar.js"
 
 export const GiffyGram = () => {
 
@@ -6,5 +7,6 @@ export const GiffyGram = () => {
     return `
         <h1>Giffygram</h1>
         ${PostEntry()}
+        ${navBar()}
     `
 }

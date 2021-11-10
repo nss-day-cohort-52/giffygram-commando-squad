@@ -2,8 +2,9 @@ export const navBar = () =>{
     
     return `
     <div class = "navigation">
-         <div class = "notification__count"><button type="button">notification</button></div>
-         <div class = "navigation__logout<button"><type="button">logout</button></div>
-         <div class = "navigation__message"><button type="button">messages</button></div>
-            </div>`
-} 
+    <h1>GiffyGram</h1>
+    <button class = "notification__count" type="button">notification</button>
+    <button class = "navigation__logout type="button">logout</button>
+    <button class = "navigation__message" type="button">messages</button>`
+}
+
