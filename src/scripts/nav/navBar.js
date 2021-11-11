@@ -5,8 +5,7 @@ export const navBar = () =>{
     <div class = "navigation">
     <h1>GiffyGram</h1>
     <button class = "notification__count" type="button">notification</button>
-
-    <button class = "navigation__logout type="button" id = "logoutButton">logout</button>
+    <button class = "navigation__logout" type="button" id = "logoutButton">logout</button>
     <button class = "navigation__message" type="button">messages</button>
     </div>`
 }
