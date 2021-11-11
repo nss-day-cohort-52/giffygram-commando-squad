@@ -10,8 +10,12 @@ export const buildPost = (post) => {
                 <div class="post__description">${post.description}</div>
                 <div class="post__tagline">Posted by ${foundUser.name}on 11/10/2021</div>
                 <div class="post__actions">
-                    <div><img id="favoritePost--${post.id}" class="actionIcon" src="../images/favorite-star-blank.svg"></div>
-                    <div><img id="blockPost--${post.id}" class="actionIcon" src="../images/block.svg"></div>
+                    <div>
+                        <img id="favoritePost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
+                    </div>
+                    <div>
+                        <img id="blockPost--${post.id}" class="actionIcon" src="images/block.svg">
+                    </div>
                 </div>
             </div>`
 }
