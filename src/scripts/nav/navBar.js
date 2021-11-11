@@ -1,4 +1,3 @@
-
 export const navBar = () =>{
     
     return `
@@ -35,6 +34,3 @@ document.addEventListener("click", clickEvent => {
         document.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
-
-
-
