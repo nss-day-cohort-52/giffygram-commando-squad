@@ -57,6 +57,6 @@ export const PostEntry = () => {
         </div>
     `
     } else {
-        return `<div class="miniMode" id="miniMode">Have a gif to post?</div>`
+        return `<div class="miniMode" id="postBtn">Have a gif to post?</div>`
     }
 }
