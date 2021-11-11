@@ -1,4 +1,4 @@
-import { deletePost, getUsers } from "../data/provider.js"
+import { deletePost, getUsers, likePost } from "../data/provider.js"
 
 // Write a function that will generate a post as html. This function will take a post as a paramter. This function will be used as a callback function to map over our posts array
 export const buildPost = (post) => {
@@ -42,5 +42,18 @@ document.addEventListener("click",
         if (click.target.id.startsWith("blockPost--")) {
             const [, postId] = click.target.id.split("--")
             deletePost(parseInt(postId))
+        }
+    })
+
+document.addEventListener("click",
+    click => {
+        if (click.target.id.startsWith("favoritePost--")) {
+            const [, postId] = click.target.id.split("--")
+            const userId = localStorage.getItem("gg_user")
+            const likeObj = {
+                postId: parseInt(postId),
+                userId: parseInt(userId)
+            }
+            likePost(likeObj)
         }
     })

@@ -6,15 +6,9 @@ export const GiffyGram = () => {
 
     // Show main main UI
     return `
-<<<<<<< HEAD
-
-        
-=======
->>>>>>> main
         ${navBar()}
+        ${MessageUsers()}
         ${PostEntry()}
         ${PostList()}
-        ${MessageUsers()}
-
     `
 }
