@@ -31,6 +31,8 @@ document.addEventListener(
     (clickEvent) => {
         if (changeEvent.target.id === "send") {
             const sendClicked = changeEvent.target.value
+            window.alert(`${walker.name} services ${walker.city}`)
         } 
+    
     }
 )
