@@ -75,3 +75,12 @@ export const savePost = (userPost) => {
             document.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
+export const deletePost = (id) => {
+    return fetch(`${API}/posts/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                document.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}
