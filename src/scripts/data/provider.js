@@ -83,6 +83,7 @@ export const savePost = (userPost) => {
         })
 }
 
+
 export const saveMessage = (userMessage) => {
     const fetchOptions = {
         method: "POST",
@@ -98,4 +99,12 @@ export const saveMessage = (userMessage) => {
         .then(() => {
             document.dispatchEvent(new CustomEvent("stateChanged"))
         })
+
+export const deletePost = (id) => {
+    return fetch(`${API}/posts/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                document.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
 }

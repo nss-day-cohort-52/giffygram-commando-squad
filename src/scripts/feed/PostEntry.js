@@ -25,7 +25,7 @@ document.addEventListener("click", clickEvent => {
         const description = document.querySelector("input[name='description']").value
         const date = new Date()
         const userId = parseInt(localStorage.getItem("gg_user"))
-
+        
         const userPost = {
             title: title,
             url: url,
@@ -33,6 +33,7 @@ document.addEventListener("click", clickEvent => {
             date: date.toLocaleDateString("en-US"),
             userId: userId
         }
+        postButtonClicked = null
         savePost(userPost)
     }
 })

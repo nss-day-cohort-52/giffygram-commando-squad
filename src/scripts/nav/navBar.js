@@ -1,13 +1,26 @@
-
 export const navBar = () =>{
     
     return `
-    <div class = "navigation">
-    <h1>GiffyGram</h1>
-    <button class = "notification__count" type="button">notification</button>
-    <button class = "navigation__logout" type="button" id = "logoutButton">logout</button>
-    <button class = "navigation__message" type="button">messages</button>
-    </div>`
+    <nav class="navigation">
+            <div class="navigation__item navigation__icon">
+                <img src="/images/pb.png" alt="Giffygram icon" id="logo">
+            </div>
+            <div class="navigation__item navigation__name">
+                Giffygram
+            </div>
+            <div class="navigation__item navigation__search">
+
+            </div>
+            <div class="navigation__item navigation__message">
+                <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
+                <div class="notification__count">
+                    0
+                </div>
+            </div>
+            <div class="navigation__item navigation__logout">
+                <button id="logoutButton" class="fakeLink">Logout</button>
+            </div>
+        </nav>`
 }
 
 // when clicked the page will render back to the login page
@@ -21,6 +34,5 @@ document.addEventListener("click", clickEvent => {
         document.dispatchEvent(new CustomEvent("stateChanged"))
     }
 })
-
 
 
