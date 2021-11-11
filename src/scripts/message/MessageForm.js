@@ -25,3 +25,12 @@ return html
 }
 
 // save/ cancle buttons needed 
+
+document.addEventListener(
+    "click",
+    (clickEvent) => {
+        if (changeEvent.target.id === "send") {
+            const sendClicked = changeEvent.target.value
+        } 
+    }
+)
