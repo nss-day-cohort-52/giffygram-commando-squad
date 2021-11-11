@@ -58,6 +58,13 @@ export const getLikes = () => {
 export const getMessages = () => {
     return applicationState.messages.map(message => ({ ...message }))
 }
+export const getFeed = () => {
+    const feedCopy = Object.assign({}, applicationState.feed)
+    return feedCopy
+}
+export const setRecipient = (id) => { // the id parameter bing passed in  because it is relying on the change event
+    applicationState.feed.recipientid = id // this is creating Id to  put into custom ordrs
+}
 
 export const savePost = (userPost) => {
     const fetchOptions = {
@@ -75,6 +82,23 @@ export const savePost = (userPost) => {
             document.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
+
+export const saveMessage = (userMessage) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userMessage)
+    }
+
+
+    return fetch(`${API}/messages`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+        })
 
 export const deletePost = (id) => {
     return fetch(`${API}/posts/${id}`, { method: "DELETE" })

@@ -1,4 +1,6 @@
-import {getUsers} from "../data/provider.js"
+import { getUsers, setRecipient, saveMessage, getFeed } from "../data/provider.js"
+
+const users = getUsers()
 
 export const MessageUsers = () => { // eporting the desired html to the page
     const users = getUsers()
@@ -30,6 +32,38 @@ export const MessageUsers = () => { // eporting the desired html to the page
     
 }
 
+// save/ cancle buttons needed 
+
+document.addEventListener(
+    "click",
+    (clickEvent) => {
+        const feed = getFeed()
+        if (clickEvent.target.id === "send") {
+            const senderId = localStorage.getItem("gg_user")
+            const recipientId = feed.recipientid
+            const message = document.querySelector("textarea[name='Message']").value
+
+            const userMessage = {
+                senderId: parseInt(senderId),
+                recipientId: recipientId,
+                message: message,
+            }
+            saveMessage(userMessage)
+        }
+    }
+)
+
+document.addEventListener(
+    "change",
+    (changeEvent) => {
+        if (changeEvent.target.id === "recipient") {
+            const recipientId = changeEvent.target.value
+            setRecipient(parseInt(recipientId))
+        }
+    }
+)
+
+   
 let messageIconClicked = null
 
 document.addEventListener("click", clickEvent => {
