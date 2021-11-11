@@ -58,3 +58,20 @@ export const getLikes = () => {
 export const getMessages = () => {
     return applicationState.messages.map(message => ({ ...message }))
 }
+
+export const savePost = (userPost) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userPost)
+    }
+
+
+    return fetch(`${API}/posts`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
