@@ -7,5 +7,6 @@ export const GiffyGram = () => {
     return `
         ${navBar()}
         ${PostEntry()}
+        ${navBar()}
     `
 }
