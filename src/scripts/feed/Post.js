@@ -1,4 +1,4 @@
-import { getUsers } from "../data/provider.js"
+import { deletePost, getUsers } from "../data/provider.js"
 
 // Write a function that will generate a post as html. This function will take a post as a paramter. This function will be used as a callback function to map over our posts array
 export const buildPost = (post) => {
@@ -19,3 +19,11 @@ export const buildPost = (post) => {
                 </div>
             </div>`
 }
+
+document.addEventListener("click",
+click => {
+    if (click.target.id.startsWith("blockPost--")) {
+        const [, postId] = click.target.id.split("--")
+        deletePost(parseInt(postId))
+    }
+})
