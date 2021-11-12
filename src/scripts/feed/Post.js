@@ -48,6 +48,7 @@ export const buildPost = (post) => {
                         <div class="post__actions">
                             <div>
                                 <img id="unFavoritedPost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
+                                
                             </div>
                             <div>
                                 <img id="blockPost--${post.id}" class="actionIcon" src="images/block.svg">

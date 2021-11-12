@@ -22,3 +22,8 @@ document.addEventListener("stateChanged",
 event => {
     renderApp()
 })
+
+applicationElement.addEventListener("stateChanged",
+event => {
+    renderApp()
+})
