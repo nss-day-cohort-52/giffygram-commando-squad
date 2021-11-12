@@ -87,6 +87,20 @@ export const savePost = (userPost) => {
         })
 }
 
+export const likePost = (likeObj) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(likeObj)
+    }
+    return fetch(`${API}/likes`, fetchOptions)
+        .then(response => response.json())
+        .then(() => {
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+        })
+}
 
 export const saveMessage = (userMessage) => {
     const fetchOptions = {
@@ -104,6 +118,7 @@ export const saveMessage = (userMessage) => {
             document.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
+
 export const deletePost = (id) => {
     return fetch(`${API}/posts/${id}`, { method: "DELETE" })
         .then(

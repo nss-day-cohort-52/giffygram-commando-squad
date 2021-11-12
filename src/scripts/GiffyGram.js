@@ -12,6 +12,5 @@ export const GiffyGram = () => {
         ${PostEntry()}
         ${PostList()}
         ${dropdownUsers()}
-
     `
 }

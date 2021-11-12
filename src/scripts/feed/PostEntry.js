@@ -3,40 +3,41 @@ import { savePost } from "../data/provider.js"
 let postButtonClicked = null
 
 document.addEventListener("click",
-event => {
-    if (event.target.id === "postBtn") {
-        postButtonClicked = 1
-        document.dispatchEvent(new CustomEvent("stateChanged"))
-    }
-})
+    event => {
+        if (event.target.id === "postBtn") {
+            postButtonClicked = 1
+            document.dispatchEvent(new CustomEvent("stateChanged"))
+        }
+    })
 
 document.addEventListener("click",
-event => {
-    if (event.target.id === "cancelGif") {
-        postButtonClicked = null
-        document.dispatchEvent(new CustomEvent("stateChanged"))
-    }
-})
-
-document.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "saveGif") {
-        const title = document.querySelector("input[name='title']").value
-        const url = document.querySelector("input[name='url']").value
-        const description = document.querySelector("input[name='description']").value
-        const date = new Date()
-        const userId = parseInt(localStorage.getItem("gg_user"))
-        
-        const userPost = {
-            title: title,
-            url: url,
-            description: description,
-            date: date.toLocaleDateString("en-US"),
-            userId: userId
+    event => {
+        if (event.target.id === "cancelGif") {
+            postButtonClicked = null
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
-        postButtonClicked = null
-        savePost(userPost)
-    }
-})
+    })
+
+document.addEventListener("click",
+    clickEvent => {
+        if (clickEvent.target.id === "saveGif") {
+            const title = document.querySelector("input[name='title']").value
+            const url = document.querySelector("input[name='url']").value
+            const description = document.querySelector("input[name='description']").value
+            const date = new Date()
+            const userId = parseInt(localStorage.getItem("gg_user"))
+
+            const userPost = {
+                title: title,
+                url: url,
+                description: description,
+                date: date.toLocaleDateString("en-US"),
+                userId: userId
+            }
+            postButtonClicked = null
+            savePost(userPost)
+        }
+    })
 
 export const PostEntry = () => {
     if (postButtonClicked) {
