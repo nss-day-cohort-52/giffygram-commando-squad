@@ -1,6 +1,6 @@
 import { getUsers, setRecipient, saveMessage, getFeed } from "../data/provider.js"
 
-const users = getUsers()
+let messageIconClicked = null
 
 export const MessageUsers = () => { // eporting the desired html to the page
     const users = getUsers()
@@ -64,7 +64,6 @@ document.addEventListener(
 )
 
    
-let messageIconClicked = null
 
 document.addEventListener("click", clickEvent => {
     // if the message button is clicked
