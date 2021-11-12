@@ -127,3 +127,11 @@ export const deletePost = (id) => {
             }
         )
 }
+export const deleteLike = (id) => {
+    return fetch(`${API}/likes/${id}`, { method: "DELETE" })
+        .then(
+            () => {
+                document.dispatchEvent(new CustomEvent("stateChanged"))
+            }
+        )
+}

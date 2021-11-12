@@ -1,4 +1,4 @@
-import { deletePost, getLikes, getUsers, likePost } from "../data/provider.js"
+import { deleteLike, deletePost, getLikes, getUsers, likePost } from "../data/provider.js"
 
 // Write a function that will generate a post as html. This function will take a post as a parameter. This function will be used as a callback function to map over our posts array
 export const buildPost = (post) => {
@@ -16,7 +16,7 @@ export const buildPost = (post) => {
                         <div class="post__tagline">Posted by ${foundUser.name} on 11/10/2021</div>
                         <div class="post__actions">
                             <div>
-                                <img id="favoritePost--${post.id}" class="actionIcon" src="images/favorite-star-yellow.svg">
+                                <img id="favoritedPost--${post.id}" class="actionIcon" src="images/favorite-star-yellow.svg">
                             </div>
                             <div>
                                 <img id="blockPost--${post.id}" class="actionIcon" src="images/block.svg">
@@ -33,7 +33,7 @@ export const buildPost = (post) => {
                         <div class="post__tagline">Posted by ${foundUser.name} on 11/10/2021</div>
                         <div class="post__actions">
                             <div>
-                                <img id="favoritePost--${post.id}" class="actionIcon" src="images/favorite-star-yellow.svg">
+                                <img id="favoritedPost--${post.id}" class="actionIcon" src="images/favorite-star-yellow.svg">
                             </div>
                         </div>
                     </div>`
@@ -47,7 +47,7 @@ export const buildPost = (post) => {
                         <div class="post__tagline">Posted by ${foundUser.name} on 11/10/2021</div>
                         <div class="post__actions">
                             <div>
-                                <img id="favoritePost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
+                                <img id="unFavoritedPost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
                             </div>
                             <div>
                                 <img id="blockPost--${post.id}" class="actionIcon" src="images/block.svg">
@@ -64,24 +64,17 @@ export const buildPost = (post) => {
                         <div class="post__tagline">Posted by ${foundUser.name} on 11/10/2021</div>
                         <div class="post__actions">
                             <div>
-                                <img id="favoritePost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
+                                <img id="unFavoritedPost--${post.id}" class="actionIcon" src="images/favorite-star-blank.svg">
                             </div>
                         </div>
                     </div>`
     }
 }
 
-document.addEventListener("click",
-    click => {
-        if (click.target.id.startsWith("blockPost--")) {
-            const [, postId] = click.target.id.split("--")
-            deletePost(parseInt(postId))
-        }
-    })
 
 document.addEventListener("click",
     click => {
-        if (click.target.id.startsWith("favoritePost--")) {
+        if (click.target.id.startsWith("unFavoritedPost--")) {
             const [, postId] = click.target.id.split("--")
             const userId = localStorage.getItem("gg_user")
             const likeObj = {
@@ -89,5 +82,26 @@ document.addEventListener("click",
                 userId: parseInt(userId)
             }
             likePost(likeObj)
+        }
+    })
+
+document.addEventListener("click",
+    click => {
+        const likes = getLikes()
+        if (click.target.id.startsWith("favoritedPost--")) {
+            const [, postId] = click.target.id.split("--")
+            const foundLikeObj = likes.find(like => like.postId === parseInt(postId))
+            deleteLike(foundLikeObj.id)
+        }
+    })
+
+
+
+
+document.addEventListener("click",
+    click => {
+        if (click.target.id.startsWith("blockPost--")) {
+            const [, postId] = click.target.id.split("--")
+            deletePost(parseInt(postId))
         }
     })
