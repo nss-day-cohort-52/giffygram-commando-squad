@@ -3,7 +3,7 @@ export const navBar = () =>{
     return `
     <nav class="navigation">
             <div class="navigation__item navigation__icon">
-                <img src="/images/pb.png" alt="Giffygram icon" id="logo">
+                <img src="images/pb.png" alt="Giffygram icon" id="logo">
             </div>
             <div class="navigation__item navigation__name">
                 Giffygram
@@ -12,7 +12,7 @@ export const navBar = () =>{
 
             </div>
             <div class="navigation__item navigation__message">
-                <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
+                <img id="directMessageIcon" src="images/fountain-pen.svg" alt="Direct message">
                 <div class="notification__count">
                     0
                 </div>
